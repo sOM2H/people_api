@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   post 'TicTacToe/single' => 'tic_tac_toe#single'
   post 'SeaBattle/single' => 'sea_battle#single'
 
-  post 'TicTacToe/multi' => 'tic_tac_toe#multi'
-  post 'SeaBattle/multi' => 'sea_battle#multi'
+  post 'TicTacToe/multi_generate' => 'tic_tac_toe#multi_generate'
+  post 'TicTacToe/multi_accept' => 'tic_tac_toe#multi_accept'
+
+  post 'SeaBattle/multi_generate' => 'sea_battle#multi_accept'
+  post 'SeaBattle/multi_accept' => 'sea_battle#multi_accept'
 end
