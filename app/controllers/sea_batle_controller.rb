@@ -1,12 +1,19 @@
 class SeaBatleController < ApplicationController
-    def index
-        render json:params, status: 200
+    def single
+        params.permit!
+        if params[:code]
+          render json: params, status: 200
+        else
+          render json: {}, status: 422
+        end
     end
 
-    private
-
-    def params
-        param.permit(:message)
+    def multi
+        params.permit!
+        if params[:first_code] && params[:second_code]
+          render json: params, status: 200
+        else
+          render json: {}, status: 422
+        end
     end
-
 end

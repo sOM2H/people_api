@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   
   root to: 'pages#index'
 
-  post 'TicTacToe' => 'tic_tac_toe#index'
-  post 'SeaBattle' => 'sea_battle#index'
+  post 'TicTacToe/single' => 'tic_tac_toe#single'
+  post 'SeaBattle/single' => 'sea_battle#single'
+
+  post 'TicTacToe/multi' => 'tic_tac_toe#multi'
+  post 'SeaBattle/multi' => 'sea_battle#multi'
 end
