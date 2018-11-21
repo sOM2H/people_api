@@ -2,7 +2,8 @@ class TicTacToeController < ApplicationController
   def single
     params.permit!
     render json: {}, status: 422 unless params[:code]
-    render json: params, status: 200
+    ans = war
+    render json: ans, status: 200
   end
 
   def multi_generate
@@ -13,20 +14,20 @@ class TicTacToeController < ApplicationController
       f.puts params[:code]
     end
     Multi.create(:token => hash)
-    render json: hash, status: 200
+    render json: hash, status: 201
   end
 
   def multi_accept
     params.permit!
     unless params[:token]
-      render status: 422
+      render json: {}, status: 422
     end
     unless params[:code]
-      render status: 422
+      render json: {}, status: 422
       return
     end
     if Multi.where(:token => params[:token]).empty?
-      render status: 422
+      render json: {}, status: 404
       return
     end
     open("app/code/"+params[:token]+"_2.code", "w") do |f|
@@ -40,7 +41,8 @@ class TicTacToeController < ApplicationController
 
   private
 
-  def war(token)
+  def war(token = nil)
     return 1
   end
 end
+
