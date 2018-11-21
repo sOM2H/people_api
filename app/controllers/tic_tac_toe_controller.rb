@@ -20,6 +20,7 @@ class TicTacToeController < ApplicationController
     params.permit!
     render status:422 unless params[:token]
     render status:422 unless params[:code]
+    render status:422 unless Multi.where(:token => params[:token]).any?
     open("app/code/"+params[:token]+"_2.code", "w") do |f|
       f.puts params[:code]
     end
