@@ -1,10 +1,13 @@
 class TicTacToeController < ApplicationController
   def single
     params.permit!
-    render json: {}, status: 422 unless params[:code]
-    ans = war
-    @data = File.read("../../../people/moves.json")
-    render json: @data, status: 200
+    unless params[:code]
+      render json: {}, status: 422  
+    else
+      ans = war
+      @data = File.read("../people/moves.json")
+      render json: @data
+    end
   end
 
   def multi_generate
