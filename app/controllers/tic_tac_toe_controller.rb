@@ -3,7 +3,8 @@ class TicTacToeController < ApplicationController
     params.permit!
     render json: {}, status: 422 unless params[:code]
     ans = war
-    render json: ans, status: 200
+    @data = File.read("../../../people/moves.json")
+    render json: @data, status: 200
   end
 
   def multi_generate
@@ -42,7 +43,7 @@ class TicTacToeController < ApplicationController
   private
 
   def war(token = nil)
-    return 1
+    
   end
 end
 
